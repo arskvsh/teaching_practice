@@ -7,9 +7,13 @@ jobs:
   convert-dz1:
     executor: python/default
     steps:
+      - run:
+          name: Jupyter get HTML
+          command: |
+            jupyter nbconvert —execute —to html dz1.ipynb
+            
       - store_artifacts:
-          path: /artifacts/
-          destination: artifact-file
+          path: /tmp/artifacts/
 
 workflows:
   main:
