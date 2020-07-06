@@ -8,7 +8,7 @@ jobs:
     executor: python/default
     steps:
       - store_artifacts:
-          path: dz1.ipynb
+          path: /teaching_practice/dz1.html
           destination: artifact-file
 
 workflows:
