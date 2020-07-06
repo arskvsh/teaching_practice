@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  convert-dz1:
+    executor: python/default
+    steps:
+      - store_artifacts:
+          path: dz1.ipynb
+          destination: artifact-file
+
+workflows:
+  main:
+    jobs:
+      - convert-dz1
