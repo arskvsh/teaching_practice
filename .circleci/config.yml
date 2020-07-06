@@ -8,7 +8,7 @@ jobs:
     executor: python/default
     steps:
       - store_artifacts:
-          path: /artifacts/dz1.html
+          path: /artifacts/
           destination: artifact-file
 
 workflows:
