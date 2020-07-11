@@ -10,7 +10,7 @@ jobs:
       - checkout
       - restore_cache:
           key: dependencies
-      - install-deps
+      - python/install-deps
       - save_cache:
           key: dependencies
           paths:
