@@ -8,15 +8,18 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
+      - restore_cache:
+          key: dependencies
+      - install-deps
+      - save_cache:
+          key: dependencies
+          paths:
+            - "venv"
       - run: echo 'export PATH=/home/circleci/.local/lib/python3.8/site-packages:$PATH' >> $BASH_ENV
       - run:
           name: Jupyter get HTML
           command: |
             jupyter nbconvert —execute —to html dz1.ipynb
-            
       - store_artifacts:
           path: ./dz1.html
 
