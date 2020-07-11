@@ -6,8 +6,6 @@ orbs:
 jobs:
   convert-dz1:
     executor: python/default
-    environment:
-       BASH_ENV: ~/.bashrc
     steps:
       - checkout
       - python/load-cache
