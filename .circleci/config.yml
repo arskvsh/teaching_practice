@@ -10,10 +10,11 @@ jobs:
       - run:
           name: Jupyter get HTML
           command: |
+            pip install -r requirements.txt
             jupyter nbconvert —execute —to html dz1.ipynb
             
       - store_artifacts:
-          path: /tmp/artifacts/
+          path: ./dz1.html
 
 workflows:
   main:
