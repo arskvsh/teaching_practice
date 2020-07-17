@@ -1,5 +1,4 @@
 FROM python:3
-RUN mkdir convert
-WORKDIR convert/
+ADD . ./
 RUN pip install --no-cache-dir -r requirements.txt
-CMD ["jupyter", "nbconvert", "./dz1.ipynb"]
+RUN jupyter nbconvert ./dz1.ipynb
