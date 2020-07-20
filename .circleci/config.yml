@@ -8,8 +8,7 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - restore_cache:
-          key: dependencies
+
       - python/install-deps
       - save_cache:
           key: dependencies
@@ -27,3 +26,5 @@ workflows:
   main:
     jobs:
       - convert-dz1
+      
+      
