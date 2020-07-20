@@ -21,9 +21,9 @@ jobs:
           command: |
             kaggle competitions download titanic
       - run:
-          name: Convert notebook
+          name: Jupyter get HTML
           command: |
-            jupyter nbconvert —execute nmtp.ipynb
+            jupyter nbconvert —execute —to html dz1.ipynb
       - store_artifacts:
           path: ./titanic-predictions.csv
       - run:
