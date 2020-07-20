@@ -4,11 +4,12 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  convert-dz1:
+  kagglification:
     executor: python/default
     steps:
       - checkout
-
+      - restore_cache:
+          key: dependencies
       - python/install-deps
       - save_cache:
           key: dependencies
@@ -16,15 +17,23 @@ jobs:
             - "venv"
       - run: echo 'export PATH=/home/circleci/.local/lib/python3.8/site-packages:$PATH' >> $BASH_ENV
       - run:
-          name: Jupyter get HTML
+          name: Kaggle get data
           command: |
-            jupyter nbconvert —execute —to html dz1.ipynb
+            kaggle competitions download titanic
+      - run:
+          name: Execute notebook
+          command: |
+            jupyter nbconvert --to notebook --inplace --execute nmtp.ipynb
       - store_artifacts:
-          path: ./dz1.html
+          path: ./titanic-predictions.csv
+      - run:
+          name: Kaggle submit data
+          command: |
+            kaggle competitions submit titanic -f ./titanic-predictions.csv -m "Titanic Submission"
 
 workflows:
   main:
     jobs:
-      - convert-dz1
+      - kagglification
       
       
