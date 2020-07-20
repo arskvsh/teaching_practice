@@ -21,11 +21,12 @@ jobs:
           command: |
             kaggle competitions download titanic
       - run:
-          name: Execute notebook
+          name: Convert notebook
           command: |
-            jupyter nbconvert --to notebook --inplace --execute ./nmtp.ipynb
+            jupyter nbconvert nmtp.ipynb
       - store_artifacts:
           path: ./titanic-predictions.csv
+          path: ./nmtp.html
       - run:
           name: Kaggle submit data
           command: |
