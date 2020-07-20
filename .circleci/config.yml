@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Execute notebook
           command: |
-            jupyter nbconvert --to notebook --inplace --execute nmtp.ipynb
+            jupyter nbconvert --to notebook --inplace --execute ./nmtp.ipynb
       - store_artifacts:
           path: ./titanic-predictions.csv
       - run:
