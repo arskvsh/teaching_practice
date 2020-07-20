@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Jupyter get HTML
           command: |
-            jupyter nbconvert —execute —to html dz1.ipynb
+            jupyter nbconvert nmtp.ipynb
       - store_artifacts:
           path: ./titanic-predictions.csv
       - run:
