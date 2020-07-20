@@ -26,7 +26,6 @@ jobs:
             jupyter nbconvert nmtp.ipynb
       - store_artifacts:
           path: ./titanic-predictions.csv
-          path: ./nmtp.html
       - run:
           name: Kaggle submit data
           command: |
